@@ -1,8 +1,13 @@
 
 1. Définir la structure du graphe.
+
+Classe noeud avec numéro du sommet, liste des arêtes entrantes et sortantes et éventuellement le niveau du sommet
+
+
 2. Structuration des données en entrée
 3. Lecture des données
 4. Faire toutes les verifs
 
+(pas de négativité)
 (Regarder présence d'un cycle)
-
+-> Utilisation algo de Bellmann/Djikstra
