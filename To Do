@@ -1,8 +1,7 @@
-
 1. Définir la structure du graphe.
 
 Classe noeud avec numéro du sommet, liste des arêtes entrantes et sortantes et éventuellement le niveau du sommet
-
+Classe arête avec noeud entrant/sortant, l'efficacité 
 
 2. Structuration des données en entrée
 3. Lecture des données
@@ -11,3 +10,4 @@ Classe noeud avec numéro du sommet, liste des arêtes entrantes et sortantes et
 (pas de négativité)
 (Regarder présence d'un cycle)
 -> Utilisation algo de Bellmann/Djikstra
+(Regarder complexité du pgm (Bellmann plus rapide))
