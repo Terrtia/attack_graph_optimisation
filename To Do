@@ -12,3 +12,5 @@ Classe Moyen: cout, tab[id arrete][efficacité]
 (Regarder présence d'un cycle)
 -> Utilisation algo de Bellmann/Djikstra
 (Regarder complexité du pgm (Bellmann plus rapide))
+
+Un individu = tableau affectant pour chaque arc un moyen
