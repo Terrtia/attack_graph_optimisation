@@ -2,6 +2,7 @@
 
 Classe noeud avec numéro du sommet, liste des arêtes entrantes et sortantes et éventuellement le niveau du sommet
 Classe arête avec noeud entrant/sortant, l'efficacité 
+Classe Moyen: cout, tab[id arrete][efficacité]
 
 2. Structuration des données en entrée
 3. Lecture des données
