@@ -12,7 +12,7 @@ public class Edge {
 	private double efficiency;
 	
 
-	public Edge(Node from, Node to) {
+	public Edge(int newParam, Node from, Node to) {
 		this.from = from;
 		this.to = to;
 	}
