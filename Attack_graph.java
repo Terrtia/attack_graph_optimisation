@@ -3,13 +3,15 @@ package attack_graph_optimisation;
 import java.util.ArrayList;
 import java.util.Random;
 
+import attack_graph_optimisation.algo.LevelDecomposition;
 import attack_graph_optimisation.graph.Edge;
 import attack_graph_optimisation.graph.Graph;
 import attack_graph_optimisation.graph.Node;
 
 public class Attack_graph {
 
-	
+	private Graph graph;
+	private LevelDecomposition levelDecomposition = new LevelDecomposition();
 	
 	public Attack_graph() {
 		//create test Graph
@@ -103,8 +105,21 @@ public class Attack_graph {
 				
 				Moyen moyen = new Moyen(tabEfficiency, cost);
 				
+				this.graph = graph;
+				
+				Boolean get_a_cycle = this.levelDecomposition.level_decomposition(graph);
+				System.out.println("cycle: " + get_a_cycle);
+				
 				System.out.println(graph.toString());
 				System.out.println(moyen.toString());
+	}
+	
+	public Graph getGraph() {
+		return graph;
+	}
+
+	public void setGraph(Graph graph) {
+		this.graph = graph;
 	}
 
 	/**

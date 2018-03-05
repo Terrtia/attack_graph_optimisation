@@ -14,6 +14,34 @@ public class Graph {
 		
 	}
 
+	public Node[] getNodes() {
+		return nodes;
+	}
+
+	public void setNodes(Node[] nodes) {
+		this.nodes = nodes;
+	}
+	
+	public int getNodesNumber(){
+		return this.nodes.length;
+	}
+	
+	public Node getNodeId(int id){
+		return this.nodes[id];
+	}
+	
+	public void setNodeLevel(int id, int level){
+		this.nodes[id].setLevel(level);
+	}
+
+	public ArrayList<Edge> getEdges() {
+		return edges;
+	}
+
+	public void setEdges(ArrayList<Edge> edges) {
+		this.edges = edges;
+	}
+
 	@Override
 	public String toString() {
 		return "Graph [nodes=" + Arrays.toString(nodes) + ", edges=" + edges

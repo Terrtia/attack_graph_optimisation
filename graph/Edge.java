@@ -1,7 +1,5 @@
 package attack_graph_optimisation.graph;
 
-import java.util.ArrayList;
-
 import attack_graph_optimisation.Moyen;
 
 public class Edge {
@@ -57,5 +55,8 @@ public class Edge {
 		this.efficiency = efficiency;
 	}
 	
+	public int getToNodeId(){
+		return this.to.getId();
+	}
 
 }
