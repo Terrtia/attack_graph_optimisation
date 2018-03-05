@@ -47,10 +47,6 @@ public class LevelDecomposition {
 				return true;
 			}
 			
-			/*for(int i=0; i<in_edge.length ; i++) {
-				System.out.println("avin_edge[" + i + "] = " + in_edge[i]);
-			}*/
-			
 			level++;
 			for(int i=0; i< graph.getNodesNumber(); i++) {
 				if(in_edge[i] != -1){
@@ -58,12 +54,13 @@ public class LevelDecomposition {
 				}
 			}
 			
-			/*for(int i=0; i<in_edge.length ; i++) {
-				System.out.println("in_edge[" + i + "] = " + in_edge[i]);
-			}*/
-			
 			if(edge_copy.size() == 0){
 				res = false;
+				for(int i=0; i< graph.getNodesNumber(); i++) {
+					if(in_edge[i] == 0){
+						graph.setNodeLevel(i, level);
+					}
+				}
 			}
 
 		}

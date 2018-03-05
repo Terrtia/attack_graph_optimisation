@@ -112,6 +112,12 @@ public class Attack_graph {
 				
 				System.out.println(graph.toString());
 				System.out.println(moyen.toString());
+				
+				//DEBUG
+				/*Node[] nodess = this.graph.getNodes();
+				for(int i=0; i<this.graph.getNodesNumber(); i++){
+					System.out.println("id " + nodess[i].getId() + " level " + nodess[i].getLevel());
+				}*/
 	}
 	
 	public Graph getGraph() {
