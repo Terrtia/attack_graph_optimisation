@@ -1,8 +1,6 @@
 package attack_graph_optimisation.algo;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
 import attack_graph_optimisation.graph.Edge;
 import attack_graph_optimisation.graph.Graph;
 import attack_graph_optimisation.graph.Node;
@@ -46,12 +44,12 @@ public class LevelDecomposition {
 			}
 			
 			if(get_a_level == false){
-				return false;
+				return true;
 			}
 			
-			for(int i=0; i<in_edge.length ; i++) {
+			/*for(int i=0; i<in_edge.length ; i++) {
 				System.out.println("avin_edge[" + i + "] = " + in_edge[i]);
-			}
+			}*/
 			
 			level++;
 			for(int i=0; i< graph.getNodesNumber(); i++) {
@@ -60,34 +58,31 @@ public class LevelDecomposition {
 				}
 			}
 			
-			for(int i=0; i<in_edge.length ; i++) {
+			/*for(int i=0; i<in_edge.length ; i++) {
 				System.out.println("in_edge[" + i + "] = " + in_edge[i]);
-			}
+			}*/
 			
 			if(edge_copy.size() == 0){
 				res = false;
 			}
-			
-			System.out.println(edge_copy.size());
-			try {
-				TimeUnit.SECONDS.sleep(1);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+
 		}
 		
-		return true;
+		return false;
 	}
 	
 	public void removeEdgeFromANode(ArrayList<Edge> edge_copy, Node node){
-		System.out.println("remove node from " + node.getId());
+		/*System.out.println("remove node from " + node.getId());
+		System.out.println("edge_copy.size() " + edge_copy.size());*/
 		for(int i=0; i<edge_copy.size(); i++){
+			//System.out.println("edge:" + edge_copy.get(i).getFrom().getId() + "=>" + edge_copy.get(i).getTo().getId());
 			if(edge_copy.get(i).getFrom().getId() == node.getId()){
-				System.out.println("node id " + node.getId());
+				//System.out.println("remove edge:" + edge_copy.get(i).getFrom().getId() + "=>" + edge_copy.get(i).getTo().getId());
 				edge_copy.remove(i);
-				System.out.println("remove edge:" + edge_copy.get(i).getFrom().getId() + "=>" + edge_copy.get(i).getTo().getId());
+				i = -1;
 			}
 		}
+		
 	}
 
 }
