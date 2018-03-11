@@ -117,6 +117,8 @@ public class Attack_graph {
 				Moyen moyen = new Moyen(tabEfficiency, cost);
 				
 				this.graph = graph;
+		
+				Bellman bellman = new Bellman(graph);
 				
 				Boolean get_a_cycle = this.levelDecomposition.level_decomposition(graph);
 				System.out.println("cycle: " + get_a_cycle);
