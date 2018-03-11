@@ -41,6 +41,26 @@ public class Graph {
 	public void setEdges(ArrayList<Edge> edges) {
 		this.edges = edges;
 	}
+	
+	public ArrayList<Node> listeSucesseur(Node s){
+		ArrayList<Node> liste = new ArrayList<>();
+		for (int i = 0; i < edges.size(); i++){
+			if (edges.get(i).getFrom() == s){
+				liste.add(edges.get(i).getTo());
+			}
+		}
+		return liste;
+	}
+	
+	public ArrayList<Node> listePredecesseur(Node s){
+		ArrayList<Node> liste = new ArrayList<>();
+		for (int i = 0; i < edges.size(); i++){
+			if (edges.get(i).getTo() == s){
+				liste.add(edges.get(i).getFrom());
+			}
+		}
+		return liste;
+	}
 
 	@Override
 	public String toString() {
