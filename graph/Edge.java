@@ -7,6 +7,7 @@ public class Edge {
 	private Node from;
 	private Node to;
 	private Moyen moyen;
+	private int num_moyen;
 	private double efficiency;
 	
 
@@ -57,6 +58,10 @@ public class Edge {
 	
 	public int getToNodeId(){
 		return this.to.getId();
+	}
+	
+	public int getEdgeCost(){
+		return this.moyen.getCost(this.num_moyen);
 	}
 
 }

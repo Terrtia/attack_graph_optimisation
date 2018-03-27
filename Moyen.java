@@ -27,6 +27,10 @@ public class Moyen {
 	public double getTabEfficiency(int id, int edge) {
 		return tabEfficiency[id][edge];
 	}
+	
+	public int getMoyenNumber(){
+		return this.cost.length;
+	}
 
 	public void setTabEfficiency(double[][] tabEfficiency) {
 		this.tabEfficiency = tabEfficiency;

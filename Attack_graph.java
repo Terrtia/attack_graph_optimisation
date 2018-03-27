@@ -83,13 +83,14 @@ public class Attack_graph {
 				
 				//Create Moyen Object
 				//num_moyen = 4 
-				int num_moyen = 4;
+				int num_moyen = 5;
 				//create cost Array
 				int[] cost = new int[num_moyen];
-				cost[0] = 2;
-				cost[1] = 5;
-				cost[2] = 8;
-				cost[3] = 10;
+				cost[0] = 0;
+				cost[1] = 2;
+				cost[2] = 5;
+				cost[3] = 8;
+				cost[4] = 10;
 				
 				//create tabEfficiency
 				Random rand = new Random();
@@ -99,13 +100,20 @@ public class Attack_graph {
 				double[][] tabEfficiency = new double[id_edge][num_moyen];
 				for(int i=0; i<id_edge; i++){
 					for(int j=0; j<num_moyen; j++){
-					tabEfficiency[i][j] = rand.nextInt((max - min) + 1) + min;
+						if(j == 0){
+							tabEfficiency[i][j] = 0;
+						} else {
+							tabEfficiency[i][j] = rand.nextInt((max - min) + 1) + min;
+						}
 					}
 				}
 				
 				Moyen moyen = new Moyen(tabEfficiency, cost);
 				
+				
+				
 				this.graph = graph;
+				this.graph.setMoyen(moyen);
 				
 				Boolean get_a_cycle = this.levelDecomposition.level_decomposition(graph);
 				System.out.println("cycle: " + get_a_cycle);
@@ -127,13 +135,22 @@ public class Attack_graph {
 	public void setGraph(Graph graph) {
 		this.graph = graph;
 	}
+	
+	public int getBudget() {
+		return this.graph.getBudget();
+	}
+
+	public void setBudget(int budget) {
+		this.graph.setBudget(budget);
+	}
 
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
 		
-		new Attack_graph();
+		Attack_graph attack_graph = new Attack_graph();
+		attack_graph.setBudget(80);
 	}
 
 }
