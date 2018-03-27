@@ -96,10 +96,31 @@ public class Graph {
 			randNumber = rand.nextInt((maxIndex - minIndex) + 1) + minIndex;
 			randMoyen = rand.nextInt((maxMoyen - minMoyen) + 1) + minMoyen;
 			
-			if(total_cost +  <= this.budget){
+			if(total_cost + 0 <= this.budget){
 				
 			}
 		}
+	}
+	
+		
+	public ArrayList<Node> listeSucesseur(Node s){
+		ArrayList<Node> liste = new ArrayList<>();
+		for (int i = 0; i < edges.size(); i++){
+			if (edges.get(i).getFrom() == s){
+				liste.add(edges.get(i).getTo());
+			}
+		}
+		return liste;
+	}
+		
+	public ArrayList<Node> listePredecesseur(Node s){
+		ArrayList<Node> liste = new ArrayList<>();
+		for (int i = 0; i < edges.size(); i++){
+			if (edges.get(i).getTo() == s){
+				liste.add(edges.get(i).getFrom());
+			}
+		}
+		return liste;
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package attack_graph_optimisation;
 import java.util.ArrayList;
 import java.util.Random;
 
+import attack_graph_optimisation.algo.Bellman;
 import attack_graph_optimisation.algo.LevelDecomposition;
 import attack_graph_optimisation.graph.Edge;
 import attack_graph_optimisation.graph.Graph;
@@ -29,53 +30,64 @@ public class Attack_graph {
 				int id_edge = 0;
 				// 0=>1
 				e = new Edge(id_edge, nodes[0], nodes[1]);
+				e.setEfficiency(1);
 				edges.add(e);
 				id_edge++;
 				// 0=>2
 				e = new Edge(id_edge, nodes[0], nodes[2]);
+				e.setEfficiency(4);
 				edges.add(e);
 				id_edge++;
 				// 0=>3
 				e = new Edge(id_edge, nodes[0], nodes[3]);
+				e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				
 				// 1=>4
 				e = new Edge(id_edge, nodes[1], nodes[4]);
+				e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				// 1=>5
 				e = new Edge(id_edge, nodes[1], nodes[5]);
+				e.setEfficiency(3);
 				edges.add(e);
 				id_edge++;
 				
 				// 2=>5
 				e = new Edge(id_edge, nodes[2], nodes[5]);
+				e.setEfficiency(3);
 				edges.add(e);
 				id_edge++;
 				
 				// 4=>7
 				e = new Edge(id_edge, nodes[4], nodes[7]);
+				e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				
 				// 3=>6
 				e = new Edge(id_edge, nodes[3], nodes[6]);
+				e.setEfficiency(1);
 				edges.add(e);
 				id_edge++;
 				
 				// 6=>9
 				e = new Edge(id_edge, nodes[6], nodes[9]);
+				e.setEfficiency(4);
 				edges.add(e);
 				id_edge++;
 				
 				// 9=>8
 				e = new Edge(id_edge, nodes[9], nodes[8]);
+				e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				
 				// 5=>8
 				e = new Edge(id_edge, nodes[5], nodes[8]);
+				e.setEfficiency(3);
 				edges.add(e);
 				id_edge++;
 				
@@ -114,6 +126,9 @@ public class Attack_graph {
 				
 				this.graph = graph;
 				this.graph.setMoyen(moyen);
+		
+				//Bellman bellman = new Bellman(graph);
+
 				
 				Boolean get_a_cycle = this.levelDecomposition.level_decomposition(graph);
 				System.out.println("cycle: " + get_a_cycle);
