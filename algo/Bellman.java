@@ -33,7 +33,7 @@ public class Bellman {
 		M = new ArrayList<>();
 		Mprime = new ArrayList<>();
 		PlusCourtChemin();
-		AfficherPlusCourtChemin();
+		getPlusCourtChemin();//retourne le poid du plus court chemin
 	}
 	
 	public void PlusCourtChemin(){
@@ -81,7 +81,8 @@ public class Bellman {
 			circuitAbsorbant = true;
 	}
 	
-	public void AfficherPlusCourtChemin(){
+	public int getPlusCourtChemin(){
+		int valPCC = 999;
 		System.out.println("---------------------------------------------------\n");
 		if (circuitAbsorbant)
 			System.out.println("Il existe un circuit absorbant pour ce graphe !\n");
@@ -105,11 +106,16 @@ public class Bellman {
 			if (hasPCC){
 				System.out.print(entry.getKey().getId());
 				System.out.println(" : " + entry.getValue().valeur + "\n");
+				if(graphe.listeSucesseur(entry.getKey()).size()==0) {
+					if(entry.getValue().valeur<valPCC)
+						valPCC=(int) entry.getValue().valeur;
+				}
 			}
 			else
 				System.out.println();
 		}
 		System.out.println("---------------------------------------------------");
+		return valPCC;
 	}
 	
 	/*Permet d'afficher recursivement le chemin du plus court chemin d'un sommet*/
@@ -169,5 +175,6 @@ public class Bellman {
 		return new Pair<>(null, null);
 	}
 }
+
 
 
