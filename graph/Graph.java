@@ -144,6 +144,39 @@ public class Graph {
 		}
 	}
 	
+	public void setRandomMoyenOn1Edge(){
+		Random rand = new Random();
+		int minIndex = 0;
+		int maxIndex = this.edges.size() - 1;
+		int minMoyen = 0;
+		int maxMoyen = this.getMoyenNumber() - 1;
+		int res = 0;
+		int randNumberIndex = 0;
+		int randMoyen = 0;
+		
+		while(res != 5){
+			randNumberIndex = rand.nextInt((maxIndex - minIndex) + 1) + minIndex;
+			randMoyen = rand.nextInt((maxMoyen - minMoyen) + 1) + minMoyen;
+			
+			if(this.getTotalCost() + this.getMoyenCost(randMoyen) <= this.budget){
+				Edge selct_edge = this.getEdgeWithIndex(randNumberIndex);
+				int real_edge_id = selct_edge.getId_edge();
+				selct_edge.setNum_moyen(randMoyen);
+				selct_edge.setEfficiency(this.getEdgeEfficiency(real_edge_id, randMoyen));
+				
+				res = 5;
+			
+			} else {
+				res++;
+				if(res == 5){ //after 5 random > budget, efficiency = 0 && num_moyen = 0
+					Edge selct_edge = this.getEdgeWithIndex(randNumberIndex);
+					int real_edge_id = selct_edge.getId_edge();
+					selct_edge.setNum_moyen(0);
+					selct_edge.setEfficiency(this.getEdgeEfficiency(real_edge_id, 0));
+				}
+			}
+		}
+	}
 		
 	public ArrayList<Node> listeSucesseur(Node s){
 		ArrayList<Node> liste = new ArrayList<>();
