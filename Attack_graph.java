@@ -30,64 +30,64 @@ public class Attack_graph {
 				int id_edge = 0;
 				// 0=>1
 				e = new Edge(id_edge, nodes[0], nodes[1]);
-				e.setEfficiency(1);
+				//e.setEfficiency(1);
 				edges.add(e);
 				id_edge++;
 				// 0=>2
 				e = new Edge(id_edge, nodes[0], nodes[2]);
-				e.setEfficiency(4);
+				//e.setEfficiency(4);
 				edges.add(e);
 				id_edge++;
 				// 0=>3
 				e = new Edge(id_edge, nodes[0], nodes[3]);
-				e.setEfficiency(2);
+				//e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				
 				// 1=>4
 				e = new Edge(id_edge, nodes[1], nodes[4]);
-				e.setEfficiency(2);
+				//e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				// 1=>5
 				e = new Edge(id_edge, nodes[1], nodes[5]);
-				e.setEfficiency(3);
+				//e.setEfficiency(3);
 				edges.add(e);
 				id_edge++;
 				
 				// 2=>5
 				e = new Edge(id_edge, nodes[2], nodes[5]);
-				e.setEfficiency(3);
+				//e.setEfficiency(3);
 				edges.add(e);
 				id_edge++;
 				
 				// 4=>7
 				e = new Edge(id_edge, nodes[4], nodes[7]);
-				e.setEfficiency(2);
+				//e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				
 				// 3=>6
 				e = new Edge(id_edge, nodes[3], nodes[6]);
-				e.setEfficiency(1);
+				//e.setEfficiency(1);
 				edges.add(e);
 				id_edge++;
 				
 				// 6=>9
 				e = new Edge(id_edge, nodes[6], nodes[9]);
-				e.setEfficiency(4);
+				//e.setEfficiency(4);
 				edges.add(e);
 				id_edge++;
 				
 				// 9=>8
 				e = new Edge(id_edge, nodes[9], nodes[8]);
-				e.setEfficiency(2);
+				//e.setEfficiency(2);
 				edges.add(e);
 				id_edge++;
 				
 				// 5=>8
 				e = new Edge(id_edge, nodes[5], nodes[8]);
-				e.setEfficiency(3);
+				//e.setEfficiency(3);
 				edges.add(e);
 				id_edge++;
 				
@@ -98,7 +98,7 @@ public class Attack_graph {
 				int num_moyen = 5;
 				//create cost Array
 				int[] cost = new int[num_moyen];
-				cost[0] = 0;
+				cost[0] = 0; // Cost 0 must be always set to 0 ! moyen 0 = no protection
 				cost[1] = 2;
 				cost[2] = 5;
 				cost[3] = 8;
@@ -126,6 +126,10 @@ public class Attack_graph {
 				
 				this.graph = graph;
 				this.graph.setMoyen(moyen);
+				
+				this.setBudget(80);
+				this.graph.setRandomMoyen();
+				System.out.println("Graph Total Cost = " + graph.getTotalCost());
 		
 				//Bellman bellman = new Bellman(graph);
 
@@ -165,7 +169,6 @@ public class Attack_graph {
 	public static void main(String[] args) {
 		
 		Attack_graph attack_graph = new Attack_graph();
-		attack_graph.setBudget(80);
 	}
 
 }

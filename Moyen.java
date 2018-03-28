@@ -24,8 +24,8 @@ public class Moyen {
 		return tabEfficiency;
 	}
 	
-	public double getTabEfficiency(int id, int edge) {
-		return tabEfficiency[id][edge];
+	public double getEdgeEfficiency(int edge, int moyen) {
+		return tabEfficiency[edge][moyen];
 	}
 	
 	public int getMoyenNumber(){

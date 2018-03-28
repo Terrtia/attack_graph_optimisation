@@ -8,10 +8,12 @@ public class Edge {
 	private Node to;
 	private Moyen moyen;
 	private int num_moyen;
+	private int id_edge;
 	private double efficiency;
 	
 
-	public Edge(int newParam, Node from, Node to) {
+	public Edge(int id_edge, Node from, Node to) {
+		this.id_edge = id_edge;
 		this.from = from;
 		this.to = to;
 	}
@@ -51,11 +53,26 @@ public class Edge {
 		return efficiency;
 	}
 
-
 	public void setEfficiency(double efficiency) {
 		this.efficiency = efficiency;
 	}
 	
+	public int getId_edge() {
+		return id_edge;
+	}
+
+	public void setId_edge(int id_edge) {
+		this.id_edge = id_edge;
+	}
+
+	public int getNum_moyen() {
+		return num_moyen;
+	}
+
+	public void setNum_moyen(int num_moyen) {
+		this.num_moyen = num_moyen;
+	}
+
 	public int getToNodeId(){
 		return this.to.getId();
 	}

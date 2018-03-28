@@ -45,6 +45,9 @@ public class Graph {
 
 	public void setMoyen(Moyen moyen) {
 		this.moyen = moyen;
+		for(int i=0; i<this.edges.size(); i++){
+			this.edges.get(i).setMoyen(moyen);
+		}
 	}
 
 	public ArrayList<Edge> getEdges() {
@@ -53,6 +56,10 @@ public class Graph {
 
 	public void setEdges(ArrayList<Edge> edges) {
 		this.edges = edges;
+	}
+	
+	public int getMoyenCost(int num_moyen) {
+		return this.moyen.getCost(num_moyen);
 	}
 	
 	public int getBudget() {
@@ -71,34 +78,69 @@ public class Graph {
 		return totalCost;
 	}
 	
+	public Edge getEdgeWithIndex(int index) {
+		for(int i=0; i<this.edges.size(); i++) {
+			if(this.edges.get(i).getId_edge() == index){
+				return this.edges.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public double getEdgeEfficiency(int id, int edge) {
+		return this.moyen.getEdgeEfficiency(id, edge);
+	}
+	
 	public int getMoyenNumber(){
 		return this.moyen.getMoyenNumber();
 	}
 	
 	public void setRandomMoyen(){
-		int[] index = new int[this.getNodesNumber()];
 		
-		for(int i=0; i<index.length; i++){
-			index[i] = i;
+		for(int i = 0; i<this.edges.size(); i++){
+			this.edges.get(i).setNum_moyen(0);
+			this.edges.get(i).setEfficiency(0);
 		}
+		
+		//copy Edge ArrayList
+		ArrayList<Edge> edge_copy = new ArrayList<>(this.getEdges());
 		
 		Random rand = new Random();
 		int minIndex = 0;
-		int maxIndex = index.length;
+		int maxIndex = this.edges.size() - 1;
 		int minMoyen = 0;
-		int maxMoyen = this.getMoyenNumber();
+		int maxMoyen = this.getMoyenNumber() - 1;
 		int res = 0;
-		int randNumber = 0;
+		int randNumberIndex = 0;
 		int randMoyen = 0;
 		int total_cost = 0;
 		
 		while(res != 5){
-			randNumber = rand.nextInt((maxIndex - minIndex) + 1) + minIndex;
+			randNumberIndex = rand.nextInt((maxIndex - minIndex) + 1) + minIndex;
 			randMoyen = rand.nextInt((maxMoyen - minMoyen) + 1) + minMoyen;
 			
-			if(total_cost + 0 <= this.budget){
+			if(total_cost + this.getMoyenCost(randMoyen) <= this.budget){
+				Edge tmp_edge = edge_copy.get(randNumberIndex);
+				Edge selct_edge = this.getEdgeWithIndex(tmp_edge.getId_edge());
+				int real_edge_id = selct_edge.getId_edge();
+				selct_edge.setNum_moyen(randMoyen);
+				selct_edge.setEfficiency(this.getEdgeEfficiency(real_edge_id, randMoyen));
+				total_cost += this.getMoyenCost(randMoyen);
+				edge_copy.remove(randNumberIndex);
 				
+				//change max random index number
+				maxIndex --;
+				
+				//finish while
+				if(edge_copy.size() == 0){
+					res = 5;
+				}
+				
+			} else {
+				res++;
 			}
+			
+			
 		}
 	}
 	
